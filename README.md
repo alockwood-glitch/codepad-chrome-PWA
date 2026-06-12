@@ -1,4 +1,5 @@
 # CodePad - A Chrome OS multi-language text editor
+Updated to include Pyodide Distrobution [https://pyodide.org/en/stable/](url)
 
 ![gghBeJ/codepad.jpg](https://image.ibb.co/gghBeJ/codepad.jpg)
 
