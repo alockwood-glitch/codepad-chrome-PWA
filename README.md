@@ -2,6 +2,29 @@
 
 ![gghBeJ/codepad.jpg](https://image.ibb.co/gghBeJ/codepad.jpg)
 
+## PWA migration
+
+This repo now includes a Progressive Web App version for modern ChromeOS and Mac testing. The original Chrome App `manifest.json` remains in place for reference, while the PWA uses `manifest.webmanifest`, `/sw.js`, and a compatibility layer for the old Chrome APIs.
+
+The next-stage classroom build also includes a Python-first workflow: new files default to simple top-level Python, the play button opens a separate output window, Python runs in-browser through locally vendored Pyodide with inline `input()`, common `turtle` graphics render in the popup, and HTML previews run there too. C/C++ runtime execution has been removed. VBScript needs a Windows runner because macOS and ChromeOS cannot run Windows Script Host directly.
+
+For Chromebooks, install the PWA as the student editor; Python and HTML run in the browser. Open tabs are saved to a local draft cache, so work comes back after a refresh or accidental close, and the project tray has a close-project button.
+
+Run it locally:
+
+```sh
+npm run check
+npm start
+```
+
+Then open:
+
+```text
+http://127.0.0.1:4173/src/html/app.html
+```
+
+See [docs/PWA_TESTING.md](docs/PWA_TESTING.md) for local testing and launch notes, and [docs/CHROMEBOOK_DEPLOYMENT.md](docs/CHROMEBOOK_DEPLOYMENT.md) for school-wide Chromebook deployment.
+
 ## Note
 
 Code Pad IDE is a free and lightweight IDE/text editor built for Chrome operating system. Code Pad allows you to write code and build projects in an easy way right on your Chrome OS device.
@@ -33,7 +56,7 @@ Bash, C/C++, CoffeeScript, CSS3, Dockerfile, GitIgnore, GoLang, HTML5, Java, Jav
  - Runs in fullscreen
  - Cut, copy & paste functionality
 
-## Installation
+## Legacy Chrome App installation
 
 **Chromebook**
 

@@ -27,6 +27,9 @@ let EditorsHandler = function () {
     this.undefinedFileMode = null;
     this.undefinedFileIcon = null;
     this.undefinedFileName = null;
+    this.localCacheKey = 'codepad.localDraft.v1';
+    this.localCacheTimer = null;
+    this.isRestoringLocalCache = false;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// Private Helper
@@ -68,6 +71,36 @@ let EditorsHandler = function () {
         });
 
         return deferred.promise();
+    };
+
+    this._splitCachedTabName = function (tabName) {
+        let name = tabName || this.defaultFileName;
+        let dot = name.lastIndexOf('.');
+
+        if (dot > 0 && dot < name.length - 1) {
+            return {
+                fileName: name.slice(0, dot),
+                fileExt: name.slice(dot + 1)
+            };
+        }
+
+        return {
+            fileName: name,
+            fileExt: undefined
+        };
+    };
+
+    this._scheduleLocalCacheSave = function () {
+        let that = this;
+
+        if (this.isRestoringLocalCache) {
+            return;
+        }
+
+        window.clearTimeout(this.localCacheTimer);
+        this.localCacheTimer = window.setTimeout(function () {
+            that.persistLocalCache();
+        }, 250);
     };
 
     this._closeTabModals = function (idx) {
@@ -242,6 +275,7 @@ let EditorsHandler = function () {
         // Detect changes in content
         aceEditor.on('change', function () {
             that._markNavTabDirty(idx);
+            that._scheduleLocalCacheSave();
         });
 
         // Maintain a centralised clipboard
@@ -552,6 +586,7 @@ let EditorsHandler = function () {
 
         if (typeof this.getEditor(idx) !== typeof undefined) {
             this.getEditor(idx).focus();
+            this._scheduleLocalCacheSave();
             return true;
         }
 
@@ -561,7 +596,12 @@ let EditorsHandler = function () {
     this.clearAllOpenTabs = function () {
         this.getTabsNavContainer().html('');
         this.getTabsContentContainer().html('');
+        this.editorDataObjs = [];
+        this.aceCleanHashes = [];
+        this.currentIdx = null;
+        this.previousIdx = null;
         this._sortableTabsInit();
+        this._scheduleLocalCacheSave();
     };
 
     this.openFileEntryInAceEditor = function (fileContent, fileEntry) {
@@ -585,13 +625,126 @@ let EditorsHandler = function () {
         return true;
     };
 
+    this.persistLocalCache = function () {
+        let that = this;
+        let tabs = [];
+        let activeOrdinal = 0;
+
+        this.getTabsNavContainer().children().each(function (ordinal, el) {
+            let idx = parseInt($(el).find('*[data-toggle="tab"]').first().attr('data-idx'));
+            let editor = that.getEditor(idx);
+
+            if (typeof editor === typeof undefined) {
+                return;
+            }
+
+            if (idx === parseInt(that.currentIdx)) {
+                activeOrdinal = ordinal;
+            }
+
+            tabs.push({
+                name: that._getTabNavName(idx),
+                content: editor.getValue()
+            });
+        });
+
+        try {
+            if (tabs.length === 0) {
+                window.localStorage.removeItem(this.localCacheKey);
+                return;
+            }
+
+            window.localStorage.setItem(this.localCacheKey, JSON.stringify({
+                savedAt: Date.now(),
+                activeOrdinal: activeOrdinal,
+                tabs: tabs
+            }));
+        } catch (err) {
+            if (this.Notifications) {
+                this.Notifications.notify('warning', 'Local cache', 'Draft cache is full. Save important files to disk.');
+            }
+        }
+    };
+
+    this.clearLocalCache = function () {
+        window.localStorage.removeItem(this.localCacheKey);
+    };
+
+    this.restoreLocalCache = function () {
+        let that = this;
+        let deferred = $.Deferred();
+        let raw = window.localStorage.getItem(this.localCacheKey);
+
+        if (!raw) {
+            deferred.resolve(false);
+            return deferred.promise();
+        }
+
+        let cache;
+        try {
+            cache = JSON.parse(raw);
+        } catch (err) {
+            this.clearLocalCache();
+            deferred.resolve(false);
+            return deferred.promise();
+        }
+
+        if (!cache.tabs || !cache.tabs.length) {
+            deferred.resolve(false);
+            return deferred.promise();
+        }
+
+        this.isRestoringLocalCache = true;
+        this.clearAllOpenTabs();
+
+        let restoredIndexes = [];
+        let sequence = $.Deferred().resolve().promise();
+
+        cache.tabs.forEach(function (tab) {
+            sequence = sequence.then(function () {
+                let nameParts = that._splitCachedTabName(tab.name);
+                return that.onAddNewTab(
+                    nameParts.fileExt,
+                    nameParts.fileName,
+                    typeof tab.content === typeof undefined ? '' : tab.content
+                ).then(function (idx) {
+                    restoredIndexes.push(idx);
+                });
+            });
+        });
+
+        sequence.then(function () {
+            let activeOrdinal = Math.min(Math.max(parseInt(cache.activeOrdinal || 0), 0), restoredIndexes.length - 1);
+            that.isRestoringLocalCache = false;
+            that.setTabNavFocus(restoredIndexes[activeOrdinal]);
+            that.persistLocalCache();
+            deferred.resolve(true);
+        }).fail(function () {
+            that.isRestoringLocalCache = false;
+            deferred.resolve(false);
+        });
+
+        return deferred.promise();
+    };
+
     this.startup = function () {
 
         let that = this;
 
         // Launch default tab
         this._loadDefaults().then(function () {
-            that.handleLaunchData(window.launchData.items);
+            let launchItems = window.launchData && window.launchData.items ? window.launchData.items : [];
+
+            if (launchItems.length > 0) {
+                that.handleLaunchData(launchItems);
+                return;
+            }
+
+            that.restoreLocalCache().then(function (restored) {
+                if (!restored) {
+                    that.handleLaunchData(launchItems);
+                }
+            });
         });
     };
 
@@ -697,6 +850,10 @@ let EditorsHandler = function () {
                     editor.$blockScrolling = Infinity;
                 }
             });
+        });
+
+        $(window).on('beforeunload', function () {
+            that.persistLocalCache();
         });
     };
 
@@ -1011,6 +1168,7 @@ let EditorsHandler = function () {
             that.setTabNavFocus(obj.idx);
             that._sortableTabsInit();
             $(window).trigger('_ace.new', [obj.idx]).trigger('resize');
+            that._scheduleLocalCacheSave();
             deferred.resolve(obj.idx);
         });
 
@@ -1082,6 +1240,7 @@ let EditorsHandler = function () {
         this.removeEditorDataObj(idx);
 
         $(window).trigger('resize');
+        this._scheduleLocalCacheSave();
 
         return true;
     };
@@ -1090,6 +1249,7 @@ let EditorsHandler = function () {
 
         this._setTabNavName(idx, fileName);
         this._setAceEditorMode(idx);
+        this._scheduleLocalCacheSave();
     };
 
     this.onToggleReadOnly = function (idx) {
@@ -1181,6 +1341,7 @@ let EditorsHandler = function () {
         this._setTabNavName(idx, fileEntry.name);
         this._setAceEditorMode(idx);
         this._closeTabModals(idx);
+        this._scheduleLocalCacheSave();
     };
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,154 @@
+{
+  "id": "/src/html/app.html",
+  "name": "Code Pad Text Editor",
+  "short_name": "CodePad",
+  "description": "A multi-language code text editor for ChromeOS, Chromebooks, and modern browsers.",
+  "start_url": "/src/html/app.html",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#1f2328",
+  "theme_color": "#343a40",
+  "categories": [
+    "developer",
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/src/img/codepad.192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/src/img/codepad.256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/src/img/codepad.512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/src/html/app.html",
+      "accept": {
+        "text/*": [
+          ".as",
+          ".as3",
+          ".asm",
+          ".bat",
+          ".c",
+          ".cc",
+          ".cfc",
+          ".cfm",
+          ".cgi",
+          ".coffee",
+          ".cnf",
+          ".conf",
+          ".cpp",
+          ".cs",
+          ".csh",
+          ".css",
+          ".csv",
+          ".dart",
+          ".diff",
+          ".do",
+          ".ejs",
+          ".el",
+          ".erb",
+          ".glsl",
+          ".go",
+          ".h",
+          ".haml",
+          ".handlebars",
+          ".haxe",
+          ".hs",
+          ".htm",
+          ".html",
+          ".htmls",
+          ".ini",
+          ".jade",
+          ".java",
+          ".js",
+          ".jsx",
+          ".json",
+          ".ksh",
+          ".less",
+          ".log",
+          ".love",
+          ".lua",
+          ".m",
+          ".make",
+          ".man",
+          ".manifest",
+          ".markdown",
+          ".mat",
+          ".md",
+          ".mdoc",
+          ".me",
+          ".micro",
+          ".obc",
+          ".patch",
+          ".php",
+          ".phtml",
+          ".pkb",
+          ".pkg",
+          ".pks",
+          ".pl",
+          ".pls",
+          ".pm",
+          ".ps",
+          ".py",
+          ".r",
+          ".rake",
+          ".rb",
+          ".sass",
+          ".scala",
+          ".scss",
+          ".sh",
+          ".shtml",
+          ".sql",
+          ".styl",
+          ".svg",
+          ".tex",
+          ".text",
+          ".ts",
+          ".tsx",
+          ".tsv",
+          ".txt",
+          ".vbs",
+          ".vcf",
+          ".xml",
+          ".yaml",
+          ".yml",
+          ".zsh"
+        ],
+        "application/json": [
+          ".json"
+        ],
+        "image/svg+xml": [
+          ".svg"
+        ]
+      },
+      "icons": [
+        {
+          "src": "/src/img/codepad.256.png",
+          "sizes": "256x256",
+          "type": "image/png"
+        }
+      ],
+      "launch_type": "single-client"
+    }
+  ]
+}

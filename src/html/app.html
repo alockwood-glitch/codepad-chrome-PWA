@@ -29,32 +29,47 @@
     <meta charset="UTF-8">
     <meta content="initial-scale=1, shrink-to-fit=no, width=device-width"
           name="viewport">
+    <meta name="theme-color"
+          content="#343a40">
+    <meta name="application-name"
+          content="CodePad">
+    <meta name="apple-mobile-web-app-capable"
+          content="yes">
+    <meta name="apple-mobile-web-app-title"
+          content="CodePad">
+    <link rel="manifest"
+          href="/manifest.webmanifest">
+    <link rel="icon"
+          sizes="192x192"
+          href="/src/img/codepad.192.png">
+    <link rel="apple-touch-icon"
+          href="/src/img/codepad.192.png">
 
     <link rel="stylesheet"
-          href="/vendor/font-awesome/css/font-awesome.min.css"/>
+          href="/vendor/font-awesome/css/font-awesome.min.css?v=20260612-4"/>
     <link rel="stylesheet"
-          href="/vendor/font-mfizz/css/font-mfizz.css">
+          href="/vendor/font-mfizz/css/font-mfizz.css?v=20260612-4">
     <link rel="stylesheet"
-          href="/vendor/font-devicon/devicon.min.css"/>
+          href="/vendor/font-devicon/devicon.min.css?v=20260612-4"/>
 
     <link rel="stylesheet"
-          href="/vendor/jquery-ui/jquery-ui.min.css"/>
+          href="/vendor/jquery-ui/jquery-ui.min.css?v=20260612-4"/>
 
     <link rel="stylesheet"
-          href="/vendor/bootstrap/bootstrap.min.css"/>
+          href="/vendor/bootstrap/bootstrap.min.css?v=20260612-4"/>
     <link rel="stylesheet"
-          href="/vendor/bootstrap-treeview/bootstrap-treeview.css"/>
+          href="/vendor/bootstrap-treeview/bootstrap-treeview.css?v=20260612-4"/>
     <link rel="stylesheet"
-          href="/vendor/range-slider/range-slider.css"/>
+          href="/vendor/range-slider/range-slider.css?v=20260612-4"/>
     <link rel="stylesheet"
-          href="/vendor/select-2/select2.min.css"/>
+          href="/vendor/select-2/select2.min.css?v=20260612-4"/>
     <link rel="stylesheet"
-          href="/vendor/animate/animate.css"/>
+          href="/vendor/animate/animate.css?v=20260612-4"/>
 
     <link rel="stylesheet"
-          href="/src/css/gfonts.css"/>
+          href="/src/css/gfonts.css?v=20260612-4"/>
     <link rel="stylesheet"
-          href="/src/css/main.css"/>
+          href="/src/css/main.css?v=20260612-4"/>
 
     <title>CodePad</title>
 </head>
@@ -382,6 +397,15 @@
             </button>
         </div>
 
+        <div class="pull-right"
+             data-toggle="tooltip"
+             title="Run code">
+            <button class="btn btn-outline-secondary btn-sm action-run-code"
+                    type="button">
+                <i class="fa fa-fw fa-play"></i>
+            </button>
+        </div>
+
         <ul class="nav tab-list sortable"
             role="tablist"></ul>
     </div>
@@ -400,6 +424,8 @@
                    title="Expand nodes"></i>
                 <i class="fa fa-fw fa-compress action-sidebar-compress"
                    title="Collapse nodes"></i>
+                <i class="fa fa-fw fa-times-circle action-project-close"
+                   title="Close project"></i>
                 <i class="fa fa-fw fa-caret-square-o-left action-sidebar-hide"
                    title="Close sidebar"></i>
             </div>
@@ -510,14 +536,17 @@
 <script src="/vendor/select-2/select2.min.js"></script>
 
 <!-- Native scripts -->
-<script src="/src/js/handlers/files.js"></script>
-<script src="/src/js/handlers/notifications.js"></script>
-<script src="/src/js/handlers/ide.settings.js"></script>
-<script src="/src/js/handlers/sidebar.js"></script>
-<script src="/src/js/handlers/editors.js"></script>
-<script src="/src/js/handlers/modals.js"></script>
+<script src="/src/js/pwa/chrome-compat.js?v=20260612-4"></script>
+<script src="/src/js/handlers/files.js?v=20260612-4"></script>
+<script src="/src/js/handlers/notifications.js?v=20260612-4"></script>
+<script src="/src/js/handlers/ide.settings.js?v=20260612-4"></script>
+<script src="/src/js/handlers/sidebar.js?v=20260612-4"></script>
+<script src="/src/js/handlers/editors.js?v=20260612-4"></script>
+<script src="/src/js/handlers/modals.js?v=20260612-4"></script>
+<script src="/src/js/handlers/classroom.js?v=20260612-4"></script>
 
 <!-- Events script -->
-<script src="/src/js/events.js"></script>
+<script src="/src/js/events.js?v=20260612-4"></script>
+<script src="/src/js/pwa/register.js?v=20260612-4"></script>
 </body>
 </html>

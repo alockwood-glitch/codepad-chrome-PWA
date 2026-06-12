@@ -15,7 +15,21 @@ $(document).ready(function () {
     Files.init(Notifications);
     Editors.init(IdeSettings, Notifications, Files);
     Sidebar.init(Notifications, Editors, Files);
-    IdeSettings.init(Editors).then(Editors.startup());
+    IdeSettings.init(Editors).then(function () {
+        Editors.startup();
+    });
+    let Classroom = new ClassroomHandler();
+    Classroom.init(Editors, Notifications);
+
+    window.CodePadApp = {
+        Editors: Editors,
+        Modals: Modals,
+        IdeSettings: IdeSettings,
+        Sidebar: Sidebar,
+        Notifications: Notifications,
+        Files: Files,
+        Classroom: Classroom
+    };
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +45,7 @@ $(document).ready(function () {
     });
 
     // Maintain correct record of the current and previous idx
-    $(document).on('shown.bs.tab', '*[data-toggle="tab"]', function (e) {
+    $(document).on('shown.bs.tab', '.tab-list *[data-toggle="tab"]', function (e) {
         Editors.previousIdx = parseInt($(e.relatedTarget).attr('data-idx'));
         Editors.currentIdx = parseInt($(e.target).attr('data-idx'));
     });
@@ -165,6 +179,11 @@ $(document).ready(function () {
     // Open project
     $(document).on('click', '.action-project-open', function () {
         Sidebar.onOpenProject();
+    });
+
+    // Close project
+    $(document).on('click', '.action-project-close', function () {
+        Sidebar.closeProject();
     });
 
     // Close application

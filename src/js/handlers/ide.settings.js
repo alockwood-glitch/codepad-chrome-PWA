@@ -74,6 +74,8 @@ let IdeSettingsHandler = function () {
                 chrome.storage.sync.set(obj, function () {
                     deferred.resolve();
                 });
+            } else {
+                deferred.resolve();
             }
         });
 

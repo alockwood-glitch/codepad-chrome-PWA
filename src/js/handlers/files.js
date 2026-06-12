@@ -235,7 +235,14 @@ let FilesHandler = function () {
             let file = files[i];
 
             // noinspection JSUnresolvedFunction
-            let fileEntry = file.webkitGetAsEntry();
+            let fileEntry = typeof file.webkitGetAsEntry === 'function'
+                ? file.webkitGetAsEntry()
+                : null;
+
+            if (!fileEntry && typeof file.getAsFile === 'function' && window.CodePadPwa) {
+                fileEntry = window.CodePadPwa.createEntryFromFile(file.getAsFile());
+            }
+
             if (file.kind === 'file' && fileEntry) {
 
                 if (that._isValidFileMime(file)) {
@@ -424,6 +431,11 @@ let FilesHandler = function () {
 
             if (chrome.runtime.lastError) {
                 onError(chrome.runtime.lastError.message);
+                return deferred.promise();
+            }
+
+            if (typeof writableFileEntry.moveTo !== 'function') {
+                deferred.resolve(undefined);
                 return deferred.promise();
             }
 

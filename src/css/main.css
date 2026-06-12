@@ -36,6 +36,11 @@ main {
     position: relative;
 }
 
+.flex-2 {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
 /*******************************************************************************/
 /************************************ Alerts ***********************************/
 /*******************************************************************************/
@@ -352,6 +357,136 @@ aside.ui-resizable.ui-resizing {
 
 .tab-content {
     background: #343a40;
+}
+
+/*******************************************************************************/
+/******************************* Classroom tools ********************************/
+/*******************************************************************************/
+.classroom-tools {
+    flex: 0 0 380px;
+    max-width: 42vw;
+    min-width: 320px;
+    height: 100%;
+    color: #dfdfdf;
+    background-color: #262a2e;
+    border-left: 1px solid rgba(0, 0, 0, .3);
+    overflow: hidden;
+}
+
+.classroom-tools-header {
+    height: 34px;
+    padding: 0.35rem 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.classroom-tools-title {
+    display: inline-block;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.classroom-tools-header .btn {
+    float: right;
+    padding: 0.15rem 0.35rem;
+}
+
+.classroom-tools-tabs {
+    min-height: 34px;
+}
+
+.classroom-tools-tabs .nav-link {
+    color: rgba(255, 255, 255, .55);
+    padding: 0.45rem 0.75rem;
+    border: none;
+}
+
+.classroom-tools-tabs .nav-link.active,
+.classroom-tools-tabs .nav-link:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.28);
+    border-bottom: 2px solid rgba(255, 193, 7, .75);
+}
+
+.classroom-tools-body,
+.classroom-tools-body .tab-pane {
+    height: calc(100% - 68px);
+}
+
+.tool-section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem;
+}
+
+.tool-row {
+    margin-bottom: 0.75rem;
+}
+
+.tool-row label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, .7);
+}
+
+.tool-row textarea,
+.tool-row select {
+    width: 100% !important;
+    color: #dfdfdf;
+    background-color: #1b1d21;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+}
+
+.tool-row textarea {
+    min-height: 80px;
+    padding: 0.5rem;
+    resize: vertical;
+    font-family: "Roboto Mono", monospace;
+}
+
+.tool-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.runtime-output,
+.translator-output {
+    flex: 1 1 auto;
+    min-height: 160px;
+    overflow: auto;
+    margin: 0;
+    padding: 0.75rem;
+    color: #d6dde7;
+    background-color: #111418;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+}
+
+.runtime-output.is-error,
+.translator-output.is-error {
+    color: #ffb7b7;
+}
+
+@media (max-width: 900px) {
+    main {
+        flex-flow: column;
+    }
+
+    .classroom-tools {
+        flex: 0 0 42%;
+        max-width: none;
+        min-width: 0;
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid rgba(0, 0, 0, .3);
+    }
 }
 
 /*******************************************************************************/

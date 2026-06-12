@@ -11,6 +11,10 @@ let NotificationsHandler = function () {
 
         let that = this;
 
+        if (window.CodePadPwa && !window.CodePadPwa.isLegacyChromeApp) {
+            return;
+        }
+
         chrome.storage.local.get(this.versionKey, function (version) {
 
             let currentVer = chrome.runtime.getManifest().version;

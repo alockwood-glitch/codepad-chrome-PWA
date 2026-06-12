@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1"
+          name="viewport">
+    <meta name="theme-color"
+          content="#1f2328">
+    <title>CodePad Output</title>
+    <link rel="icon"
+          sizes="192x192"
+          href="/src/img/codepad.192.png">
+    <link rel="stylesheet"
+          href="/vendor/font-awesome/css/font-awesome.min.css?v=20260612-4">
+    <link rel="stylesheet"
+          href="/src/css/gfonts.css?v=20260612-4">
+    <link rel="stylesheet"
+          href="/src/css/runtime.css?v=20260612-4">
+</head>
+<body>
+<header class="runtime-header">
+    <div>
+        <strong>CodePad output</strong>
+        <span class="runtime-title">Waiting for code...</span>
+    </div>
+    <button class="runtime-stop"
+            type="button"
+            title="Stop program">
+        <i class="fa fa-fw fa-stop"></i>
+    </button>
+</header>
+<main class="runtime-main">
+    <section class="terminal-pane"
+             aria-label="Program output">
+        <div class="terminal"
+             aria-live="polite">
+            <div class="terminal-stream"></div>
+            <form class="terminal-input-line">
+                <span class="terminal-prompt">&gt;</span>
+                <input class="terminal-input"
+                       autocomplete="off"
+                       spellcheck="false"
+                       aria-label="Program input"
+                       disabled>
+            </form>
+        </div>
+    </section>
+    <section class="turtle-pane"
+             aria-label="Turtle graphics">
+        <canvas id="turtle-canvas"
+                width="640"
+                height="640"></canvas>
+    </section>
+    <section class="html-pane"
+             aria-label="HTML preview">
+        <iframe class="html-preview"
+                title="HTML preview"
+                sandbox="allow-scripts allow-forms allow-modals"></iframe>
+    </section>
+</main>
+<script src="/src/js/runtime-config.js?v=20260612-4"></script>
+<script src="/src/js/runtime.js?v=20260612-4"></script>
+</body>
+</html>

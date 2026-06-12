@@ -69,6 +69,16 @@ let SidebarHandler = function () {
         this.getAside().find('.sidebar-menu-title').html(title);
     };
 
+    this._setEmptyProjectView = function () {
+        this.getSidebar().html(
+            '<br/>' +
+            '<p class="text-center">There is no project currently open...</p>' +
+            '<p class="text-center">' +
+            '<button class="btn btn-warning btn-sm action-project-open">Open project</button>' +
+            '</p>'
+        );
+    };
+
     this._setNodeName = function (nodeId, nodeName) {
 
         if (typeof nodeId === typeof undefined || typeof nodeName === typeof undefined) {
@@ -134,6 +144,18 @@ let SidebarHandler = function () {
         if (this.isInitialised) {
             $sidebar.treeview('collapseAll');
         }
+    };
+
+    this.closeProject = function () {
+        if (this.isInitialised) {
+            this.getSidebar().treeview('remove');
+        }
+
+        this.dirEntry = null;
+        this.isInitialised = false;
+        this._setSidebarTopMenu('No project opened...');
+        this._setEmptyProjectView();
+        this.showSidebar();
     };
 
 
