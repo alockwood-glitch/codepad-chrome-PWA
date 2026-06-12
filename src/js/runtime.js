@@ -269,7 +269,7 @@
             inputState = new Int32Array(new SharedArrayBuffer(8));
             inputBuffer = new Uint8Array(new SharedArrayBuffer(inputBufferSize));
         }
-        pyodideWorker = new Worker('/src/js/pyodide-worker.js?v=20260612-4', {type: 'module'});
+        pyodideWorker = new Worker('/src/js/pyodide-worker.js?v=20260612-6', {type: 'module'});
 
         pyodideWorker.onmessage = function (event) {
             let message = event.data || {};
@@ -295,7 +295,7 @@
             }
 
             if (message.type === 'error') {
-                terminalLine(message.text || 'Python runtime error.\n', 'stderr');
+                terminalLine(message.text || 'Python runtime error. Check /diagnostics.html for Pyodide hosting details.\n', 'stderr');
                 return;
             }
 
@@ -307,7 +307,19 @@
         };
 
         pyodideWorker.onerror = function (event) {
-            terminalLine('Python runtime error: ' + event.message + '\n', 'stderr');
+            let details = event.message ||
+                (event.error && event.error.message) ||
+                'The Python worker could not start. Check /diagnostics.html and confirm pyodide-worker.js is served as text/javascript.';
+
+            terminalLine('Python runtime error: ' + details + '\n', 'stderr');
+            if (event.filename || event.lineno) {
+                terminalLine('Worker source: ' + (event.filename || 'unknown') + ':' + (event.lineno || 0) + '\n', 'stderr');
+            }
+            stopPyodideWorker();
+        };
+
+        pyodideWorker.onmessageerror = function () {
+            terminalLine('Python runtime error: the worker sent an unreadable message. Reload the app and try again.\n', 'stderr');
             stopPyodideWorker();
         };
 

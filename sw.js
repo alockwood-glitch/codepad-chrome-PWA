@@ -1,4 +1,4 @@
-const CACHE_VERSION = "codepad-pwa-v1.0.96-20260612-5";
+const CACHE_VERSION = "codepad-pwa-v1.0.96-20260612-6";
 const APP_SHELL = [
   "/",
   "/index.html",

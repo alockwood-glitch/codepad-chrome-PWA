@@ -3,7 +3,7 @@ let ClassroomHandler = function () {
     this.Editors = undefined;
     this.Notifications = undefined;
     this.runtimeWindow = undefined;
-    this.runtimeBuild = '20260612-4';
+    this.runtimeBuild = '20260612-6';
 
     this.languageByExtension = {
         py: 'python',
