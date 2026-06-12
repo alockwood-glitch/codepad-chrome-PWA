@@ -1,0 +1,12 @@
+{
+  "theme": "ace/theme/monokai",
+  "fontFamily": "Roboto Mono",
+  "fontSize": "11pt",
+  "newFileName": "exercise",
+  "newFileExt": "py",
+  "undefinedFile": {
+    "icon": "fa fa-file-text",
+    "mode": "text",
+    "name": "Plain text"
+  }
+}

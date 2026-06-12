@@ -1,0 +1,197 @@
+{
+  "conf": {
+    "icon": "devicon-apache-plain",
+    "mode": "apache_conf",
+    "name": "Apache Config"
+  },
+  "c": {
+    "icon": "devicon devicon-c-plain",
+    "mode": "c_cpp",
+    "name": "C/C++"
+  },
+  "coffee": {
+    "icon": "devicon devicon-coffeescript-original",
+    "mode": "coffee",
+    "name": "CoffeeScript"
+  },
+  "css": {
+    "icon": "icon-css3-alt",
+    "mode": "css",
+    "name": "CSS3"
+  },
+  "dockerfile": {
+    "icon": "devicon devicon-docker-plain",
+    "mode": "dockerfile",
+    "name": "DockerFile"
+  },
+  "gitignore": {
+    "icon": "icon-git",
+    "mode": "gitignore",
+    "name": "Git Ignore"
+  },
+  "go": {
+    "icon": "devicon devicon-go-plain",
+    "mode": "golang",
+    "name": "GoLang"
+  },
+  "html": {
+    "icon": "icon-html5-alt",
+    "mode": "html",
+    "name": "HTML5"
+  },
+  "hbs": {
+    "icon": "icon-html5",
+    "mode": "handlebars",
+    "name": "HTML Handlebars"
+  },
+  "twig": {
+    "icon": "icon-html5",
+    "mode": "twig",
+    "name": "HTML Twig"
+  },
+  "java": {
+    "icon": "devicon devicon-java-plain",
+    "mode": "java",
+    "name": "Java"
+  },
+  "js": {
+    "icon": "icon-javascript-alt",
+    "mode": "javascript",
+    "name": "JavaScript"
+  },
+  "jsx":{
+    "icon": "icon-javascript-alt",
+    "mode": "jsx",
+    "name": "JSX"
+  },
+  "json": {
+    "icon": "icon-javascript-alt",
+    "mode": "json",
+    "name": "JSON"
+  },
+  "less": {
+    "icon": "devicon devicon-less-plain-wordmark",
+    "mode": "less",
+    "name": "Less"
+  },
+  "lua": {
+    "icon": "icon-script-alt",
+    "mode": "lua",
+    "name": "Lua"
+  },
+  "md": {
+    "icon": "icon-html",
+    "mode": "markdown",
+    "name": "Markdown"
+  },
+  "php": {
+    "icon": "icon-php-alt",
+    "mode": "php",
+    "name": "PHP"
+  },
+  "phtml": {
+    "icon": "icon-php-alt",
+    "mode": "php",
+    "name": "PHTML"
+  },
+  "pl": {
+    "icon": "icon-perl",
+    "mode": "perl",
+    "name": "Perl"
+  },
+  "pm": {
+    "icon": "icon-perl",
+    "mode": "perl",
+    "name": "Perl Module"
+  },  
+  "py": {
+    "icon": "icon-python",
+    "mode": "python",
+    "name": "Python"
+  },
+  "rb": {
+    "icon": "icon-ruby",
+    "mode": "ruby",
+    "name": "Ruby"
+  },
+  "rs": {
+    "icon": "icon-rust",
+    "mode": "rust",
+    "name": "Rust"
+  },
+  "sass": {
+    "icon": "icon-sass",
+    "mode": "sass",
+    "name": "Sass"
+  },
+  "scala": {
+    "icon": "icon-scala",
+    "mode": "scala",
+    "name": "Scala"
+  },
+  "scss": {
+    "icon": "icon-css3-alt",
+    "mode": "scss",
+    "name": "Scss"
+  },
+  "sh": {
+    "icon": "icon-script-alt",
+    "mode": "sh",
+    "name": "Shell"
+  },
+  "sql": {
+    "icon": "icon-database",
+    "mode": "sql",
+    "name": "SQL"
+  },
+  "mssql": {
+    "icon": "icon-mssql",
+    "mode": "sqlserver",
+    "name": "SQL Server"
+  },
+  "pgsql": {
+    "icon": "devicon devicon-postgresql-plain",
+    "mode": "pgsql",
+    "name": "SQL Postgres"
+  },
+  "svg": {
+    "icon": "icon-svg",
+    "mode": "svg",
+    "name": "SVG"
+  },
+  "ts": {
+    "icon": "devicon devicon-typescript-plain",
+    "mode": "typescript",
+    "name": "TypeScript"
+  },
+  "tsx":{
+    "icon": "devicon devicon-typescript-plain",
+    "mode": "tsx",
+    "name": "TSX"
+  },
+  "vb": {
+    "icon": "devicon devicon-visualstudio-plain",
+    "mode": "vbscript",
+    "name": "VB Script"
+  },
+  "txt": {
+    "icon": "devicon fa fa-file-text",
+    "mode": "textfile",
+    "name": "Plain text"
+  },
+  "xhtml": {
+    "icon": "icon-html",
+    "mode": "html",
+    "name": "XHTML"
+  },
+  "xml": {
+    "icon": "icon-html",
+    "mode": "xml",
+    "name": "XML"
+  },
+  "yml": {
+    "icon": "devicon devicon-devicon-plain",
+    "mode": "yaml",
+    "name": "Yaml"
+  }
+}

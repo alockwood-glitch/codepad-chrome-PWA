@@ -1,0 +1,743 @@
+* {
+    outline: none;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    background-color: rgb(52, 58, 64);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-drag: auto;
+}
+
+body.drag-over main {
+    opacity: 0.8;
+    border: 2px dashed rgba(0, 123, 255, .5);
+}
+
+header {
+    box-shadow: 0 1px 2px #222;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+}
+
+.flex-1,
+.flex-2 {
+    position: relative;
+}
+
+.flex-2 {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/*******************************************************************************/
+/************************************ Alerts ***********************************/
+/*******************************************************************************/
+.alert {
+    max-width: 450px;
+}
+
+/*******************************************************************************/
+/************************************ Buttons **********************************/
+/*******************************************************************************/
+.btn-primary {
+    background-color: rgba(0, 123, 255, .7);
+    border-color: rgba(0, 123, 255, .7);
+}
+
+.btn-outline-primary {
+    border-color: rgba(0, 123, 255, .7);
+}
+
+/*******************************************************************************/
+/************************************ Sidebar **********************************/
+/*******************************************************************************/
+aside {
+    min-width: 260px;
+    background-color: #262a2e;
+    border-right: 1px solid rgba(0, 0, 0, .3);
+    overflow: hidden;
+    height: 100%;
+}
+
+aside.ui-resizable.ui-resizing {
+    border: 1px dashed rgba(0, 123, 255, .5);
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.sidebar {
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: #262a2e;
+}
+
+.sidebar-menu {
+    width: 100%;
+    height: 30px;
+}
+
+.sidebar-menu {
+    width: 100%;
+    padding: 0.3rem 0.5rem 0.3rem 0.8rem;
+}
+
+.sidebar-menu-actions i {
+    color: rgba(255, 255, 255, .3);
+}
+
+.sidebar-menu-actions i:hover {
+    color: rgba(0, 123, 255, .7);
+}
+
+.sidebar .list-group-item {
+    background: none;
+    padding: .4rem .75rem;
+    color: rgba(255, 255, 255, .5);
+}
+
+.sidebar .list-group-item .treeview span.icon {
+    margin: 0 3px 0 0;
+    font-size: 0.75rem;
+    line-height: 10px;
+    opacity: 0.4;
+}
+
+.sidebar .list-group-item:hover {
+    background-color: rgba(0, 0, 0, 0.28) !important;
+}
+
+.sidebar .list-group-item.node-sidebar.node-selected {
+    background-color: #1b1d21 !important;
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+.sidebar .fa-sidebar {
+    font-size: 0.78rem;
+}
+
+/*******************************************************************************/
+/************************************* Navbar **********************************/
+/*******************************************************************************/
+.navbar {
+    padding: 0 1rem;
+    position: relative;
+    height: 39px;
+}
+
+.navbar .navbar-brand .btn {
+    padding: 0.2em 0.4em;
+}
+
+.navbar .dropdown-menu {
+    min-width: 25rem;
+}
+
+.navbar ul > li {
+    font-weight: bold;
+}
+
+.navbar-help {
+    font-style: italic;
+    opacity: 0.7;
+    font-size: 0.9em;
+    margin: 2px 0 0 0;
+}
+
+.toggle-on,
+.toggle-off {
+    text-indent: -900px;
+}
+
+.toggle-handle {
+    background-color: #ffffff;
+}
+
+.nav-logo {
+    margin: -4px -8px 0 0;
+}
+
+/*******************************************************************************/
+/*********************************** Ace Editor ********************************/
+/*******************************************************************************/
+.tab-content,
+.tab-pane,
+.editor {
+    width: 100%;
+    height: 100%;
+}
+
+.ace_gutter-cell {
+    font-size: 0.9rem !important;
+}
+
+.ace_tooltip.ace_doc-tooltip,
+.ace_editor.ace_autocomplete {
+    background-color: rgb(52, 58, 64) !important;
+    color: rgb(154, 157, 160) !important;
+    font-size: 1.2rem !important;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.18) !important;
+    border-radius: .25rem !important;
+    opacity: 0.95 !important;
+    border: none !important;
+}
+
+.ace_tooltip.ace_doc-tooltip {
+    border: none !important;
+}
+
+.ace_tooltip.ace_doc-tooltip hr {
+    margin-top: 0.2rem !important;
+    margin-bottom: 0.2rem !important;
+    border: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, .1) !important;
+}
+
+.ace_editor.ace_autocomplete .ace_completion-highlight {
+    color: rgba(0, 123, 255, .9) !important;
+}
+
+.ace_editor.ace_autocomplete .ace_content .ace_line.ace_selected {
+    color: #dfdfdf !important;
+}
+
+.ace_marker-layer .ace_active-line {
+    opacity: 0.8 !important;
+}
+
+.ace_editor.ace_autocomplete .ace_marker-layer .ace_line-hover,
+.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {
+    background-color: rgba(0, 0, 0, 0.28) !important;
+    color: #dfdfdf !important;
+    border: none !important;
+}
+
+.ace_tooltip.ace_doc-tooltip {
+    padding: 10px !important;
+    background-color: rgba(0, 0, 0, 0.28) !important;
+}
+
+.ace_search {
+    font-size: 1rem !important;
+    background-color: #343a40 !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.ace_search .ace_button {
+    color: #dfdfdf !important;
+}
+
+/*******************************************************************************/
+/********************************* Status bar **********************************/
+/*******************************************************************************/
+.ace-status-bar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 24px;
+    z-index: 99;
+    box-shadow: 0 -1px 2px #222;
+}
+
+.ace_status-info,
+.ace_status-indicator {
+    float: right;
+}
+
+.ace_status-info > span,
+.ace_status-indicator {;
+    padding: 0 5px;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    line-height: 25px;
+}
+
+/*******************************************************************************/
+/************************************* Tabs ************************************/
+/*******************************************************************************/
+*[contenteditable]:focus {
+    outline: 1px solid rgba(255, 175, 3, 0.7);
+    color: rgba(255, 255, 255, .5);
+    padding: 0.1rem 0.2rem;
+}
+
+.nav-tabs {
+    width: 100%;
+    border: none;
+    min-height: 29px;
+    position: relative;
+}
+
+.nav-tabs .ui-sortable-placeholder {
+    min-width: 150px;
+    border: 1px dashed rgba(0, 123, 255, .5);
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.tab-list li a {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 4px 50px;
+    color: #dfdfdf;
+    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.22);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.tab-list li a:hover,
+.tab-list li a.active {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.28);
+    border-bottom: 2px solid rgba(0, 123, 255, .5);
+}
+
+.tab-list li a .dirty-tab,
+.tab-list li a .action-close-tab {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    font-size: 1em;
+    text-shadow: none;
+    font-weight: 100;
+}
+
+.tab-list li a .action-close-tab {
+    display: none
+}
+
+.tab-list .filetype-icon.fa {
+    margin: 5px 0 0 0;
+    font-size: 1em;
+}
+
+.tab-list li a .dirty-tab {
+    display: inline-flex;
+    color: #92c62c;
+    opacity: 1;
+}
+
+.tab-list li a:hover:not(.is-dirty) .action-close-tab {
+    display: inline-flex;
+}
+
+.tab-list li a .icon {
+    position: absolute;
+    font-size: 1.3em;
+    left: 8px;
+    top: 3px;
+}
+
+.tab-list li a .devicon {
+    top: 6px;
+}
+
+.tab-list li a.active .icon {
+    color: rgba(0, 123, 255, .7);
+}
+
+.add-file-container button {
+    display: inline-block;
+    margin: 0 0.5rem;
+    padding: 0.3rem 0.5rem 0.25rem 0.5rem;
+}
+
+.tab-content {
+    background: #343a40;
+}
+
+/*******************************************************************************/
+/******************************* Classroom tools ********************************/
+/*******************************************************************************/
+.classroom-tools {
+    flex: 0 0 380px;
+    max-width: 42vw;
+    min-width: 320px;
+    height: 100%;
+    color: #dfdfdf;
+    background-color: #262a2e;
+    border-left: 1px solid rgba(0, 0, 0, .3);
+    overflow: hidden;
+}
+
+.classroom-tools-header {
+    height: 34px;
+    padding: 0.35rem 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.classroom-tools-title {
+    display: inline-block;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.classroom-tools-header .btn {
+    float: right;
+    padding: 0.15rem 0.35rem;
+}
+
+.classroom-tools-tabs {
+    min-height: 34px;
+}
+
+.classroom-tools-tabs .nav-link {
+    color: rgba(255, 255, 255, .55);
+    padding: 0.45rem 0.75rem;
+    border: none;
+}
+
+.classroom-tools-tabs .nav-link.active,
+.classroom-tools-tabs .nav-link:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.28);
+    border-bottom: 2px solid rgba(255, 193, 7, .75);
+}
+
+.classroom-tools-body,
+.classroom-tools-body .tab-pane {
+    height: calc(100% - 68px);
+}
+
+.tool-section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem;
+}
+
+.tool-row {
+    margin-bottom: 0.75rem;
+}
+
+.tool-row label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, .7);
+}
+
+.tool-row textarea,
+.tool-row select {
+    width: 100% !important;
+    color: #dfdfdf;
+    background-color: #1b1d21;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+}
+
+.tool-row textarea {
+    min-height: 80px;
+    padding: 0.5rem;
+    resize: vertical;
+    font-family: "Roboto Mono", monospace;
+}
+
+.tool-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.runtime-output,
+.translator-output {
+    flex: 1 1 auto;
+    min-height: 160px;
+    overflow: auto;
+    margin: 0;
+    padding: 0.75rem;
+    color: #d6dde7;
+    background-color: #111418;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+}
+
+.runtime-output.is-error,
+.translator-output.is-error {
+    color: #ffb7b7;
+}
+
+@media (max-width: 900px) {
+    main {
+        flex-flow: column;
+    }
+
+    .classroom-tools {
+        flex: 0 0 42%;
+        max-width: none;
+        min-width: 0;
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid rgba(0, 0, 0, .3);
+    }
+}
+
+/*******************************************************************************/
+/************************************ Modals ***********************************/
+/*******************************************************************************/
+.modal-lg {
+    max-width: 80% !important;
+}
+
+.modal-header {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.modal-body {
+    background: rgba(0, 0, 0, 0.28);
+}
+
+.modal-body label span {
+    opacity: 0.8;
+}
+
+.modal-backdrop.show {
+    opacity: .3;
+}
+
+/*******************************************************************************/
+/************************************ Forms ************************************/
+/*******************************************************************************/
+input[type="text"],
+input[type="password"],
+select,
+.select2,
+.select2-selection {
+    background: transparent;
+    border: none;
+    width: 100% !important;
+    font-family: inherit;
+    font-size: 1.2rem;
+    color: #ccc;
+    height: 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.select2-container--default .select2-selection--single {
+    background: transparent;
+    border: none;
+    height: 36px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #ccc !important;
+}
+
+.select2-dropdown {
+    background-color: #343a40;
+    color: rgba(255, 255, 255, .5);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.select2-container--default .select2-results__group {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+}
+
+.select2-search.select2-search--dropdown {
+    display: none;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true],
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #262a2e;
+    color: rgba(255, 255, 255, 1);
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus,
+input[type="password"]:hover,
+input[type="password"]:focus,
+select:hover,
+select:focus,
+.select2:hover,
+.select2:focus,
+.select2-selection:hover,
+.select2-selection:focus {
+    border-bottom: 2px solid rgba(0, 123, 255, .7);
+}
+
+/*******************************************************************************/
+/****************************** Form Dropdown **********************************/
+/*******************************************************************************/
+.form-group {
+    margin: 0.8rem 0;
+    border-bottom: 1px dashed rgb(56, 61, 65);
+    padding: 0 0 0.4rem 0;
+}
+
+.dropdown-menu {
+    background-color: #262a2e;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    max-height: 650px;
+
+}
+
+.add-file-container .dropdown-menu {
+    overflow-y: scroll;
+}
+
+.dropdown-item,
+.dropdown-item a {
+    color: rgba(255, 255, 255, .5);
+}
+
+.dropdown-item:hover,
+.dropdown-item a:hover {
+    background-color: #1b1d21;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+
+.dropdown-item .filetype-icon {
+    width: 20px;
+    display: inline-block;
+}
+
+.dropdown-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/*******************************************************************************/
+/******************************** Form Toggle **********************************/
+/*******************************************************************************/
+.cmn-tgl {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+
+.cmn-tgl + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input.cmn-tgl-rnd-flt + label {
+    padding: 2px;
+    width: 60px;
+    height: 30px;
+    background-color: #cccccc;
+    border-radius: 30px;
+    transition: background 0.4s;
+}
+
+input.cmn-tgl-rnd-flt + label:before, input.cmn-tgl-rnd-flt + label:after {
+    display: block;
+    position: absolute;
+    content: "";
+}
+
+input.cmn-tgl-rnd-flt + label:before {
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    right: 2px;
+    background-color: #fff;
+    border-radius: 30px;
+    -webkit-transition: background 0.4s;
+    -moz-transition: background 0.4s;
+    -o-transition: background 0.4s;
+    transition: background 0.4s;
+}
+
+input.cmn-tgl-rnd-flt + label:after {
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: 22px;
+    background-color: #cccccc;
+    border-radius: 22px;
+    transition: margin 0.4s, background 0.4s;
+}
+
+input.cmn-tgl-rnd-flt:checked + label {
+    background-color: rgba(0, 123, 255, .7);
+}
+
+input.cmn-tgl-rnd-flt:checked + label:after {
+    margin-left: 30px;
+    background-color: rgba(0, 123, 255, .7);
+}
+
+/*******************************************************************************/
+/************************************ Buttons **********************************/
+/*******************************************************************************/
+.btn {
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.btn.btn-expanded {
+    width: 100%;
+}
+
+.paypal-donate:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+/*******************************************************************************/
+/********************************** Scrollers **********************************/
+/*******************************************************************************/
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, .2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .1);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 255, 255, .02);
+}
+
+/*******************************************************************************/
+/********************************** Scrollers **********************************/
+/*******************************************************************************/
+*[data-notify="container"] {
+    opacity: 0.7;
+}
+
+/*******************************************************************************/
+/******************************** Bootstrap menu *******************************/
+/*******************************************************************************/
+.bootstrapMenu .dropdown-menu {
+    padding: .3rem 0;
+}
+
+.bootstrapMenu .dropdown-item {
+    padding: .25em 1em;
+}
+
+.bootstrapMenu .dropdown-item .fa {
+    font-size: 0.9rem;
+}
